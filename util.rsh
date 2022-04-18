@@ -343,3 +343,9 @@ export const requireTok = (A) => {
   commit();
   return { tokens: [tok0] };
 };
+export const transferUntrackedTokenAmountToAddr = (tok, addr) => {
+  const f1 = getUntrackedFunds();
+  const f2 = getUntrackedFunds(tok);
+  transfer(f1).to(addr);
+  transfer(f2, tok).to(addr);
+}
